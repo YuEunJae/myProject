@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+	
+<tiles-definitions>
+
+	<!-- 타일즈 파일이 가져야하는 레이아웃 형식을 정의 -->
+	<!-- name속성은 상속받아서 사용할 이름, template는 타일즈템플릿의 경로 -->
+	<definition name="templateDefault" template="/WEB-INF/tiles/templateDefault.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="left" value="/WEB-INF/tiles/left.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+	
+	<!-- 위의 선언된 타일즈템플릿 상속 -->
+	<!-- name 속성에 controller에서 연결할 이름 -->
+	<definition name="*/*" extends="templateDefault">
+		<put-attribute name="body" value="/WEB-INF/views/*/{1}.jsp" />
+	</definition>
+	
+</tiles-definitions>
