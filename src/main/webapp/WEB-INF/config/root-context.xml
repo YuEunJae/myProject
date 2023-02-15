@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/db-config/hikari.properties"></property>
+	</bean>
+	
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
+		<property name="driverClassName" value="${ds.driverClassName}" />
+		<property name="jdbcUrl" value="${ds.jdbcUrl}" />
+		<property name="username" value="${ds.username}" />
+		<property name="password" value="${ds.password}" />
+	</bean>
+	
+	<bean class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
 		
 </beans>
