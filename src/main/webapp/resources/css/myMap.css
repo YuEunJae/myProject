@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.contents-title {
+    text-align: center;
+}
+
+#map {
+    height: 400px;
+}

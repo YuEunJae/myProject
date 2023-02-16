@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+
+/* 컨텐츠 타이틀 */
+.contents-title {
+    text-align: center;
+}
+
+/* 컨텐츠 리스트 옵션 */
+.contents-option > .left-area {
+    float: left;
+}
+
+.contents-option > .right-area {
+    float: right;
+}
+
+/* 테이블 옵션 */
+.contents-box tr {
+    height: 3rem;
+
+    border-bottom: 1px solid #eee;
+}
+
+/* 검색 영역 */
+.search-area {
+    margin-top: 2rem;
+    padding: 15px 30px;
+    height: 5rem;
+    background-color: #f4f4f4;
+    text-align: center;
+}
