@@ -10,7 +10,7 @@ public class joinController {
 	
 	@RequestMapping("/joinView.do")
 	public String moveJoinView() {
-		return "joinForm";
+		return "/join/joinForm";
 	}
 	
 	@RequestMapping("/idCheck.do")
