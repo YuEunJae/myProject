@@ -42,7 +42,7 @@
                       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
                     </div>
                     <button type="submit" class="btn btn-primary">회원가입</button>
-                    <button type="cancel" class="btn btn-primary">취소</button>
+                    <button type="cancel" class="btn btn-primary">wht?</button>
                   </form>
             </div>
             <div class="row col-sm-3"></div>
