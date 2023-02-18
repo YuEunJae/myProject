@@ -6,7 +6,6 @@ import lombok.Data;
 public class joinVO {
 	
 	private String id;
-	private String pw;
-	private String email;
+	private String pwd;
 
 }

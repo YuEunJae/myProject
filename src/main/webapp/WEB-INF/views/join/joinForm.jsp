@@ -1,5 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<html lang="UTF-8">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,14 +18,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
     <!-- 로그인폼 css -->
-    <link rel="stylesheet" href="/resources/css/joinForm.css">
+    <link rel="stylesheet" href="${path }/resources/css/joinForm.css">
 </head>
 <body>
 
     <!-- 로고영역 -->
     <div class="container">
         <div class="row col-sm-12 logo-box">
-            <img src="../image/logo.png">
+            <img src="${path }/resources/images/logo.png">
         </div>
     </div>
 
@@ -31,18 +35,18 @@
 
             <div class="row col-sm-4"></div>
             <div class="row col-sm-5 mt-3">
-                <form action="">
+                <form action="join.do" method="post">
                     <div class="mb-3 mt-3">
-                      <label for="email">Email:</label>
+                      <label for="email">ID:</label>
                       <button class="right btn btn-warning" type="button">check</button>
-                      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                      <input type="email" class="form-control" id="id" placeholder="Enter ID" name="id">
                     </div>
                     <div class="mb-3">
                       <label for="pwd">Password:</label>
                       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
                     </div>
                     <button type="submit" class="btn btn-primary">회원가입</button>
-                    <button type="cancel" class="btn btn-primary">wht?</button>
+                    <button type="reset" class="btn btn-primary">취소</button>
                   </form>
             </div>
             <div class="row col-sm-3"></div>
