@@ -27,6 +27,6 @@ public class joinController {
 		
 		
 		
-		return "loginView.do";
+		return "/login/loginView.do";
 	}
 }
