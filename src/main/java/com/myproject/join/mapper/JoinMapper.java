@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface JoinMapper {
 	
-	public int idCheck(String id);
+	public String idCheck(String id);
 	
 }

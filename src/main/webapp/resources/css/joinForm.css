@@ -31,7 +31,7 @@ button[type="submit"] {
     margin-top: 20px;
 }
 
-button[type="cancel"] {
+button[type="reset"] {
     margin-top: 2px;
     width: 100%;
 }

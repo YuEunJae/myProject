@@ -1,0 +1,8 @@
+CREATE TABLE USER_STATUS(
+    ID VARCHAR2(30) PRIMARY KEY, -- 아이디
+    PWD VARCHAR2(30), -- 비밀번호
+    EMAIL VARCHAR2(50), -- 이메일
+    IS_LOCK CHAR(1) CHECK(IS_LOCK IN('Y', 'N')), -- 잠금여부
+    PWD_MISS NUMBER(10), -- 비밀번호 실패횟수
+    LAST_LOGIN_IP VARCHAR2(30) -- 마지막 로그인 IP
+);
