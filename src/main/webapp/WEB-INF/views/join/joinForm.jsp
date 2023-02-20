@@ -41,9 +41,13 @@
                       <button class="right btn btn-warning" type="button" id="idCheck">check</button>
                       <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 mt-3">
                       <label for="pwd">Password:</label>
                       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="psd" required>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
                     </div>
                     <button type="submit" class="btn btn-primary">회원가입</button>
                     <button type="reset" class="btn btn-primary">취소</button>
@@ -57,28 +61,27 @@
 
 <script type="text/javascript">
 	
+	// id 중복체크
 	document.getElementById("idCheck").onclick = function() {
-	
 	    var id = document.getElementById("id");
-	
-	    fetch("idCheck.do?id=" + id.value)
-	        .then(function(res) {
-	                res.json().then(function(data) {
-	                	
-	                	if(data == "0") {
-	                		if(confirm("사용가능한 아이디 입니다. 사용하시겠습니까?")) {
-	                			id.setAttribute("readonly", true);
-	                		}
-	                	} else {
-	                		alert("사용중인 아이디입니다.");
-	                	}
-	                	
+	    fetch("idCheck.do?id=" + id.value).then(function(res) {
+                res.json().then(function(data) {
+                	if(data == "0") {
+                		if(confirm("사용가능한 아이디 입니다. 사용하시겠습니까?")) {
+                			id.setAttribute("readonly", true);
+                		} else {
+                			id.setAttribute("readonly", false);
+                		}
+                	} else {
+                		alert("사용중인 아이디입니다.");
+                	}
 	            })
 	        }).catch(err => {
 	            console.log(err);
 	        })
-	
 	};
+	
+	// 회원가입
 	
 </script>
 
