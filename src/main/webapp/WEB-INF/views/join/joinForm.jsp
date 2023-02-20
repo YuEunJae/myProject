@@ -64,12 +64,17 @@
 	// id 중복체크
 	document.getElementById("idCheck").onclick = function() {
 	    var id = document.getElementById("id");
+	    var regId = /^[a-zA-Z0-9]{5,20}$/; // 알파벳 a~z, A~Z, 숫자 0~9 5글자 이상 20글자 이하
 	    
 	    if(id.value.length >= 0) {
 	    	alert("ID를 입력해 주세요.");
 	    	id.focus();
 	    	return;
-	    }
+	    } else if(!regId.test(id.value)) {
+            alert("ID는 알파벳과 숫자를 섞어 5~20 사이만 가능합니다.");
+            id.focus();
+            return;
+        }
 	    
 	    fetch("idCheck.do?id=" + id.value).then(function(res) {
                 res.json().then(function(data) {
@@ -90,17 +95,20 @@
 	
 	// 회원가입 폼 유효성 검사
 	document.getElementById("submitJoin").onclick = function() {
+		
+		var regPwd = /^[A-Za-z0-9]{6,12}$/; // 비밀번호
+        var regEma = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일
 
         if(joinfrm.id.getAttribute("readonly") != "true") {
             alert("아이디 중복확인을 눌러주세요.");
             joinfrm.id.focus();
             return;
-        } else if(joinfrm.pwd.value == "") {
-            alert("비밀번호를 확인해 주세요.");
+        }else if(joinfrm.pwd.value == "" || !regPwd.test(joinfrm.pwd.value)) {
+            alert("비밀번호는 알파벳+숫자 6~12 이여야 합니다.");
             joinfrm.pwd.focus();
             return;
-        } else if(joinfrm.email.value == "") {
-            alert("이메일을 확인해 주세요.");
+        }else if(joinfrm.email.value == "" || !regEma.test(joinfrm.email.value)) {
+            alert("이메일 형식이 올바르지 않습니다. \n 이메일을 확인해 주세요.");
             joinfrm.email.focus();
             return;
         }
