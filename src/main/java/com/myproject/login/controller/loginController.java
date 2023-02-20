@@ -8,7 +8,7 @@ public class loginController {
 	
 	@RequestMapping("/loginView.do")
 	public String moveLoginView() {
-		return "loginForm";
+		return "login/loginForm.empty";
 	}
 	
 	@RequestMapping("/login.do")

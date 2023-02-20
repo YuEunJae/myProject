@@ -35,7 +35,7 @@
 
             <div class="row col-sm-4"></div>
             <div class="row col-sm-5 mt-3">
-                <form action="join.do" method="post">
+                <form action="join.do" method="post" name="joinfrm">
                     <div class="mb-3 mt-3">
                       <label for="id">ID:</label>
                       <button class="right btn btn-warning" type="button" id="idCheck">check</button>
@@ -66,7 +66,7 @@
 	    var id = document.getElementById("id");
 	    var regId = /^[a-zA-Z0-9]{5,20}$/; // 알파벳 a~z, A~Z, 숫자 0~9 5글자 이상 20글자 이하
 	    
-	    if(id.value.length >= 0) {
+	    if(id.value == "") {
 	    	alert("ID를 입력해 주세요.");
 	    	id.focus();
 	    	return;

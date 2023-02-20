@@ -26,7 +26,7 @@ public class joinController {
 
 	@RequestMapping("/joinView.do")
 	public String moveJoinView() {
-		return "/join/joinForm";
+		return "/join/joinForm.empty";
 	}
 
 	// id 중복체크
@@ -53,6 +53,9 @@ public class joinController {
 	public String doJoin(JoinVO vo, RedirectAttributes RA) throws Exception {
 		
 		try  {
+			
+			System.out.println("전달받은 vo : " + vo.toString());
+			
 			boolean sucJoin = joinService.join(vo) > 0 ? true : false;
 			if(sucJoin) {
 				RA.addFlashAttribute("msg", "회원가입에 성공하였습니다.\n 로그인화면으로 이동합니다.");
@@ -64,6 +67,6 @@ public class joinController {
 			RA.addFlashAttribute("msg", "회원가입에 실패하였습니다. \n 개발자에게 문의하세요.");
 		}
 
-		return "redirect:/login/loginView.do";
+		return "redirect:/loginView.do";
 	}
 }
