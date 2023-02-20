@@ -15,8 +15,33 @@
 	
 	<!-- 위의 선언된 타일즈템플릿 상속 -->
 	<!-- name 속성에 controller에서 연결할 이름 -->
-	<definition name="*/*" extends="templateDefault">
-		<put-attribute name="body" value="/WEB-INF/views/*/{1}.jsp" />
+	<definition name="*.tiles" extends="templateDefault">
+		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
+	
+	<definition name="*/*.tiles" extends="templateDefault">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="*/*/*.tiles" extends="templateDefault">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+	<!-- tiles 제외 시킨다 -->
+   <definition name="empty" template="/WEB-INF/tiles/empty.jsp">
+   		<put-attribute name="body" value=""/>
+   </definition>
+   
+   <definition name="*.empty" extends="empty">
+   		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/>
+   </definition>
+
+   <definition name="*/*.empty" extends="empty">
+   		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+   </definition>
+   
+   <definition name="*/*/*.empty" extends="empty">
+   		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+   </definition>
 	
 </tiles-definitions>
