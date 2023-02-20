@@ -49,7 +49,7 @@
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">회원가입</button>
+                    <button type="button" class="btn btn-primary" id="submitJoin">회원가입</button>
                     <button type="reset" class="btn btn-primary">취소</button>
                   </form>
             </div>
@@ -64,6 +64,13 @@
 	// id 중복체크
 	document.getElementById("idCheck").onclick = function() {
 	    var id = document.getElementById("id");
+	    
+	    if(id.value.length >= 0) {
+	    	alert("ID를 입력해 주세요.");
+	    	id.focus();
+	    	return;
+	    }
+	    
 	    fetch("idCheck.do?id=" + id.value).then(function(res) {
                 res.json().then(function(data) {
                 	if(data == "0") {
@@ -81,7 +88,25 @@
 	        })
 	};
 	
-	// 회원가입
+	// 회원가입 폼 유효성 검사
+	document.getElementById("submitJoin").onclick = function() {
+
+        if(joinfrm.id.getAttribute("readonly") != "true") {
+            alert("아이디 중복확인을 눌러주세요.");
+            joinfrm.id.focus();
+            return;
+        } else if(joinfrm.pwd.value == "") {
+            alert("비밀번호를 확인해 주세요.");
+            joinfrm.pwd.focus();
+            return;
+        } else if(joinfrm.email.value == "") {
+            alert("이메일을 확인해 주세요.");
+            joinfrm.email.focus();
+            return;
+        }
+
+        joinfrm.submit();
+    }
 	
 </script>
 
