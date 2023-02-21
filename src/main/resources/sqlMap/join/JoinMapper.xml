@@ -9,8 +9,8 @@
 			SELECT COUNT(*) AS CNT FROM USER_STATUS WHERE ID = #{id}
 		</select>
 		
-		<insert id="join" parameterType="JoinVO">
-			INSERT INTO(ID, PWD, EMAIL, IS_LOCK, PWD_MISS)
+		<insert id="joinUser">
+			INSERT INTO USER_STATUS(ID, PWD, EMAIL, IS_LOCK, PWD_MISS)
 			VALUES(#{id}, #{pwd}, #{email}, 'N', '0')
 		</insert>
 	

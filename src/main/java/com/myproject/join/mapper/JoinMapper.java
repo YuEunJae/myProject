@@ -8,6 +8,6 @@ import com.myproject.join.vo.JoinVO;
 public interface JoinMapper {
 	
 	public String idCheck(String id);
-	public int join(JoinVO vo);
+	public int joinUser(JoinVO vo);
 	
 }

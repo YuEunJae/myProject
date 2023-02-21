@@ -4,6 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
 
+
 @Data
 @Alias("JoinVO")
 public class JoinVO {

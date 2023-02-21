@@ -21,7 +21,7 @@ import com.myproject.join.vo.JoinVO;
 @Controller
 public class joinController {
 
-	@Autowired
+	@Autowired(required=false)
 	private JoinService joinService;
 
 	@RequestMapping("/joinView.do")
@@ -53,18 +53,15 @@ public class joinController {
 	public String doJoin(JoinVO vo, RedirectAttributes RA) throws Exception {
 		
 		try  {
-			
-			System.out.println("전달받은 vo : " + vo.toString());
-			
-			boolean sucJoin = joinService.join(vo) > 0 ? true : false;
+			boolean sucJoin = joinService.joinUser(vo) > 0 ? true : false;
 			if(sucJoin) {
-				RA.addFlashAttribute("msg", "회원가입에 성공하였습니다.\n 로그인화면으로 이동합니다.");
+				RA.addFlashAttribute("msg", "회원가입에 성공하였습니다. 로그인화면으로 이동합니다.");
 			} else {
-				RA.addFlashAttribute("msg", "회원가입에 실패하였습니다. \n 잠시 후 다시 시도해 주세요.");
+				RA.addFlashAttribute("msg", "회원가입에 실패하였습니다. 잠시 후 다시 시도해 주세요.");
 			}
 						
 		} catch(Exception e) {
-			RA.addFlashAttribute("msg", "회원가입에 실패하였습니다. \n 개발자에게 문의하세요.");
+			RA.addFlashAttribute("msg", "회원가입에 실패하였습니다. 개발자에게 문의하세요.");
 		}
 
 		return "redirect:/loginView.do";

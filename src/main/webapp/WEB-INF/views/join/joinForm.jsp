@@ -43,7 +43,7 @@
                     </div>
                     <div class="mb-3 mt-3">
                       <label for="pwd">Password:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="psd" required>
+                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="email">Email:</label>
