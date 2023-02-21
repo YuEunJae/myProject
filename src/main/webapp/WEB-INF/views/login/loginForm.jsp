@@ -56,4 +56,18 @@
     </div>
     
 </body>
+
+<!-- 전달받은 메세지 alert 출력 -->
+<script type="text/javascript">
+	window.onload = function() {
+	    if(history.state == '') return;
+	
+	    var msg = '${msg}';
+	
+	    if(msg != ''){
+	      alert(msg);
+	      history.replaceState('', null, null);
+	    }
+ 	}
+</script>
 </html>

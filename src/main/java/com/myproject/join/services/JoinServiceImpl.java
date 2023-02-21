@@ -18,7 +18,7 @@ public class JoinServiceImpl implements JoinService{
 	}
 	
 	@Override
-	public int join(JoinVO vo) {
-		return joinMapper.join(vo);
+	public int joinUser(JoinVO vo) {
+		return joinMapper.joinUser(vo);
 	}
 }
