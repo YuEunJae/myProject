@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.myproject.login.mapper.LoginMapper">
+	
+		<select id="getIsLock" parameterType="String" resultType="String">
+			SELECT IS_LOCK FROM USER_STATUS
+			WHERE ID = #{id}
+		</select>
+		
+		<select id="loginUser" parameterType="JoinVO" resultType="HashMap">
+			SELECT ID, EAMIL, PWD_MISS FROM USER_STATUS
+			WHERE ID = #{id} AND PWD = #{pwd}	
+		</select>
+		
+		<update id="plusPwdMiss" parameterType="String">
+			UPDATE USER_STATUS
+			SET PWD_MISS = PWD_MISS + 1
+			WHERE ID = #{id}
+		</update>
+		
+		<update id="setIsLock" parameterType="String">
+			UPDATE USER_STATUS
+			SET IS_LOCK = 'Y'
+			WHERE ID = #{id}
+		</update>
+	
+	</mapper>
