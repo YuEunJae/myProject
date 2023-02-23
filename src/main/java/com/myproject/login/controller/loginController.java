@@ -10,9 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.myproject.join.vo.JoinVO;
 import com.myproject.login.services.LoginService;
+import com.myproject.util.SessionConfig;
 
 @Controller
 public class loginController {
@@ -28,7 +30,7 @@ public class loginController {
 		return "login/loginForm.empty";
 	}
 	
-	@RequestMapping("/login.do")
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String doLogin(JoinVO vo, Model model, HttpServletRequest req) throws Exception{
 		
 		try {
@@ -44,6 +46,7 @@ public class loginController {
 			if(sucLogin) { // 로그인 성공
 				
 				HttpSession session = req.getSession();
+				SessionConfig.getSessionidCheck("id", userInfo.get("ID").toString());
 				session.setAttribute("id", userInfo.get("ID"));
 				session.setAttribute("email", userInfo.get("EMAIL"));
 				model.addAttribute("msg", "환영합니다. " + userInfo.get("ID") + "님");
@@ -65,6 +68,14 @@ public class loginController {
 		}
 		
 		return "login/loginForm.empty";
+	}
+	
+	@RequestMapping(value = "/logout.do")
+	public String logOut(HttpServletRequest req) {
+		
+		req.getSession().invalidate();
+		
+		return "redirect:/loginView.do";
 	}
 	
 }
