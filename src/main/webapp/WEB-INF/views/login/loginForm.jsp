@@ -34,14 +34,14 @@
         <div class="row col-sm-12">
             <div class="row col-sm-4"></div>
             <div class="row col-sm-5 mt-3">
-                <form action="/action_page.php">
+                <form action="login.do" method="post">
                     <div class="mb-3 mt-3">
-                      <label for="email">Email:</label>
-                      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                      <label for="id">ID:</label>
+                      <input type="text" class="form-control" id="id" placeholder="Enter email" name="id" required>
                     </div>
                     <div class="mb-3">
                       <label for="pwd">Password:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
                     </div>
                     <div class="form-check mb-3">
                       <label class="form-check-label">
@@ -56,6 +56,10 @@
     </div>
     
 </body>
+
+<script type="text/javascript">
+	console.log("${sessionScope.id}");
+</script>
 
 <!-- 전달받은 메세지 alert 출력 -->
 <script type="text/javascript">

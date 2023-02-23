@@ -11,8 +11,8 @@
 		</select>
 		
 		<select id="loginUser" parameterType="JoinVO" resultType="HashMap">
-			SELECT ID, EAMIL, PWD_MISS FROM USER_STATUS
-			WHERE ID = #{id} AND PWD = #{pwd}	
+			SELECT ID, PWD, EMAIL, PWD_MISS FROM USER_STATUS
+			WHERE ID = #{id}
 		</select>
 		
 		<update id="plusPwdMiss" parameterType="String">
