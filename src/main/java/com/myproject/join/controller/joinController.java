@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ import com.myproject.join.vo.JoinVO;
 
 @Controller
 public class joinController {
+	
+	@Autowired
+	BCryptPasswordEncoder passEncoder;
 
 	@Autowired(required=false)
 	private JoinService joinService;
@@ -53,6 +57,7 @@ public class joinController {
 	public String doJoin(JoinVO vo, RedirectAttributes RA) throws Exception {
 		
 		try  {
+			vo.setPwd(passEncoder.encode(vo.getPwd()));
 			boolean sucJoin = joinService.joinUser(vo) > 0 ? true : false;
 			if(sucJoin) {
 				RA.addFlashAttribute("msg", "회원가입에 성공하였습니다. 로그인화면으로 이동합니다.");
