@@ -32,6 +32,12 @@ public class SessionConfig implements HttpSessionListener{
             sessions.remove(userId);    		
         }
     }
+    
+    // 로그아웃 시 처리
+    public synchronized static void logoutSessionid(HttpSession se) {
+    	sessions.get(se.getId()).invalidate();
+    	sessions.remove(se.getId());
+    }
 
     @Override
     public void sessionCreated(HttpSessionEvent hse) {
