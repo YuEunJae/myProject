@@ -5,4 +5,32 @@
 	
 	<mapper namespace="com.myproject.board.mapper.BoardMapper">
 	
+		<select id="getBoardContent" resultType="BoardVO">
+			SELECT BNO, TITLE, CONTENT, WRITER, RDATE
+			FROM BOARD_CONTENT
+			ORDER BY BNO DESC
+		</select>
+		
+		<select id="getDetailContent" parameterType="String" resultType="BoardVO">
+			SELECT BNO, TITLE, CONTENT, WRITER, RADTE
+			FROM BOARD_CONTENT
+			WHERE BNO = #{bno}
+		</select>
+		
+		<insert id="regist" parameterType="BoardVO">
+			INSERT INTO BOARD_CONTENT(BNO, TITLE, CONTENT, WRITER, RDATE)
+			VALUES(BOARD_SEQ.NEXTVAL, #{title}, #{content}, #{writer}, SYSDATE)
+		</insert>
+		
+		<update id="update" parameterType="BoardVO">
+			UPDATE BOARD_CONTENT
+			SET TITLE = #{title},
+				CONTENT = #{content},
+			WHERE BNO = #{bno}
+		</update>
+		
+		<delete id="delete" parameterType="String">
+			DELETE FROM BOARD_CONTENT WHERE BNO = #{bno}
+		</delete>
+	
 	</mapper>
