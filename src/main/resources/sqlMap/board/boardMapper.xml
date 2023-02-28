@@ -5,6 +5,10 @@
 	
 	<mapper namespace="com.myproject.board.mapper.BoardMapper">
 	
+		<select id="getTotal" resultType="Integer">
+			SELECT COUNT(*) FROM BOARD_CONTENT
+		</select>
+	
 		<select id="getBoardContent" resultType="BoardVO">
 			SELECT BNO, TITLE, CONTENT, WRITER, RDATE
 			FROM BOARD_CONTENT
