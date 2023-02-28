@@ -16,6 +16,11 @@ public class BoardServiceImpl implements BoardService{
 	private BoardMapper boardMapper;
 	
 	@Override
+	public int getTotal() {
+		return boardMapper.getTotal();
+	}
+	
+	@Override
 	public List<BoardVO> getContentList(Criteria cri) {
 		return boardMapper.getContentList(cri);
 	}
